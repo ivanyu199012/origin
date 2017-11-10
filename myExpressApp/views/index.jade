@@ -3,7 +3,5 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  input( type="button",
-        value = "Test",
-        id = "btn_test" )
-  script(src="/javascripts/indexUICtrl.js")
+  a( href="#" class="easyui-linkbutton" type="button", id = "btn_test" ) Test
+  // script( src="/js/indexUICtrl.js" )
