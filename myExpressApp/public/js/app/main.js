@@ -1,9 +1,18 @@
-define(["jquery", "jquery.alpha", "jquery.beta", "easyui"], function( $ ) 
+define([ 
+    "jquery", 
+    "socket.io",
+    "jquery.alpha", 
+    "jquery.beta", 
+    "easyui"
+    ], function( $, io ) 
 {
     //the jquery.alpha.js and jquery.beta.js plugins have been loaded.
     $( function() 
     {
+        // Require js test for custom library
         $( 'body' ).alpha().beta();
+
+        // jqeury and express test
         $( '#btn_test' ).on( 'click', function()
         {
         
@@ -22,5 +31,22 @@ define(["jquery", "jquery.alpha", "jquery.beta", "easyui"], function( $ )
             }
             http.send(params);
         });
+        
+        $('#btn_test_socket').on( 'click', function()
+        {
+             // Socket test
+            var socket = io.connect( window.location.origin );
+        
+            socket.on('connect', function(data) 
+            {
+                socket.emit('join', 'Hello World from client');
+				
+				socket.on('messages', function(data) 
+				{
+					alert(data);
+				});
+            });
+        });
+       
     } );
 });

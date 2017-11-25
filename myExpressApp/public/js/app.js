@@ -9,10 +9,11 @@ requirejs.config(
       "app": "../app"
     },
     "shim": {
-        "jquery.alpha": ["jquery"],
-        "jquery.beta": ["jquery"]
+        "easyui" : [ "jquery" ],
+        "jquery.alpha" : [ "jquery" ],
+        "jquery.beta": [ "jquery" ]
     }
 });
 
-// Load the main app module to start the app
-requirejs(["app/main"]);
+// Load the main app module to stacrt the app
+requirejs( [ "app/main" ] );
