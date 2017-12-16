@@ -5,5 +5,14 @@ block content
   p Welcome to #{title}
   a( href="#" class="easyui-linkbutton" id = "btn_test" ) Test
   a( href="#" class="easyui-linkbutton" id = "btn_test_socket" ) Test Socket
+  
+  .container
+    if (!user)
+      a(href="/login") Login
+      br
+      a(href="/register") Register
+    if (user)
+      p You are currently logged in as #{user.username}
+      a(href="/logout") Logout
 
   script( data-main="/js/app" src="/js/lib/require.js" )
