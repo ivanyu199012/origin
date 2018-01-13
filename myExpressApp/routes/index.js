@@ -15,6 +15,7 @@ router.get('/', function(req, res, next)
 	});
 });
 
+/* Get register page */
 router.get('/register', function( req, res )
 {
     res.render('register', { });
