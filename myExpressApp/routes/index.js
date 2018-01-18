@@ -97,7 +97,11 @@ router.post('/test/', function(req, res, next)
   res.send( 'Express Response' );
 });
 
-// Web socket 
+
+/** =============================================
+ - The following web socket.io file is not used 
+ ===============================================*/
+/*
 io.on('connection', function(client) 
 {  
   console.log('Client connected...');
@@ -106,6 +110,7 @@ io.on('connection', function(client)
       console.log(data);
   });
 });
+*/
 
 
 module.exports = router;
