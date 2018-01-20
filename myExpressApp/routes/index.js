@@ -1,7 +1,7 @@
 const express = require( 'express' );
 const passport = require('passport');
 const Account = require('../models/account');
-const io = require('socket.io')( require( '../bin/www' ).server );
+// const io = require('socket.io')( require( '../bin/www' ).server );
 const router = express.Router();
 
 
