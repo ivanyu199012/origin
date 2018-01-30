@@ -1,18 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  a( href="#" class="easyui-linkbutton" id = "btn_test" ) Test
-  a( href="#" class="easyui-linkbutton" id = "btn_test_socket" ) Test Socket
-  
-  .container
-    if (!user)
-      a(href="/login") Login
-      br
-      a(href="/register") Register
-    if (user)
-      p You are currently logged in as #{user.username}
-      a(href="/logout") Logout
+	div( data-options="region:'north'" style="height:50px" )
+		table( style="width : 100%")
+			tr
+				td
+					label( style="padding-right: 10px" ) ICMSv1.0
+					a( id="btn_synchronize_index" href="javascript:void(0)" class="easyui-linkbutton" ) Synchronize
+				td( style="text-align : right" )
+					a( id="btn_logout_index" href="javascript:void(0)" class="easyui-linkbutton" ) logout
 
-  script( data-main="/js/app" src="/js/lib/require.js" )
+	script( data-main="/js/app/index" src="/js/lib/require.js" )

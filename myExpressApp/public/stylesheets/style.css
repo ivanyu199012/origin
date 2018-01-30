@@ -1,8 +1,29 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body 
+{
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+div.form-group 
+{
+    padding: 5px;
+}
+
+input
+{
+    min-width : 200px;
+    width : 40%;
+}
+
+label.form-label
+{
+    padding-right: 5px;
 }
 
 a {
   color: #00B7FF;
+}
+
+.error
+{
+	color: red;
 }

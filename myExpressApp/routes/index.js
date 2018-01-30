@@ -1,117 +1,29 @@
-const express = require( 'express' );
-const passport = require('passport');
-const Account = require('../models/account');
-// const io = require('socket.io')( require( '../bin/www' ).server );
-const router = express.Router();
-
-
-/* GET home page. */
-router.get('/', function(req, res, next) 
+module.exports = function ()
 {
-  res.render('index', 
-	{ 
-		title : 'Express', 
-		user : req.user 
-	});
-});
+    const express = require( 'express' );
+    const passport = require('passport');
+    const router = express.Router();
 
-/* Get register page */
-router.get('/register', function( req, res )
-{
-    res.render('register', { });
-});
-
-router.post('/register', function(req, res, next)
-{
-    Account.register(
-        new Account({ username : req.body.username }), 
-        req.body.password, 
-        function(err, account)
-		{
-			
-			if (err) {
-			  return res.render('register', { error : err.message });
-			}
-
-			passport.authenticate('local')( req, res, function()
-			{
-				req.session.save( function(err)
-				{
-					if (err) 
-					{
-						return next(err);
-					}
-					res.redirect('/');
-				});
-			});
-		});
-});
-
-
-router.get('/login', function(req, res)
-{
-	if ( req.user )
-	{
+    /**
+     * Go to login page first
+     */
+    router.get('/', function(req, res, next) 
+    {
 		res.redirect('/');
-	}
-	else
-	{
-		res.render('login', { user : req.user, error : req.flash('error')});
-	}
-});
+	} );
+	
 
-router.post('/login', 
-	passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), function(req, res, next)
-	{
-		req.session.save( function( err )
-		{
-			if (err) {
-				return next(err);
-			}
-			res.redirect('/');
-		});
-    });
-
-
-router.get('/logout', 
-	function(req, res, next)
+	router.get( '/logout', function( req, res, next )
 	{
 		req.logout();
-		req.session.save(
-		function(err)
+		req.session.save( function(err)
 		{
-			if (err) {
+			if (err) 
+			{
 				return next(err);
 			}
-			res.redirect('/');
+			res.send( '' );
 		});
 	});
-
-
-
-// Test post
-router.post('/test/', function(req, res, next) 
-{
-  // test push
-  console.log( 'AAAAAAAAAAAAAAA' );
-  
-  res.send( 'Express Response' );
-});
-
-
-/** =============================================
- - The following web socket.io file is not used 
- ===============================================*/
-/*
-io.on('connection', function(client) 
-{  
-  console.log('Client connected...');
-
-  client.on('join', function(data) {
-      console.log(data);
-  });
-});
-*/
-
-
-module.exports = router;
+    return router;
+};

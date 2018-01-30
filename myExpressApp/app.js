@@ -18,7 +18,11 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 
-var routes = require('./routes/index');
+/**
+ * Route
+ */
+var loginRoute = require('./routes/login')();
+var indexRoute = require('./routes/index')();
 var users = require('./routes/users');
 
 var app = express();
@@ -55,7 +59,11 @@ app.use(flash());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+/**
+ * Assign url to route
+ */
+app.use( '/', loginRoute );
+app.use( '/index', indexRoute );
 
 // passport config
 var Account = require('./models/account');

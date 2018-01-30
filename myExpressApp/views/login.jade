@@ -1,17 +1,22 @@
 extends layout
 
 block content
-  .container
-    h1 Login Page
-    p.lead Say something worthwhile here.
-    p #{error}
-    br
-    form(role='form', action="/login",method="post", style='max-width: 300px;')
-      .form-group
-          input.form-control(type='text', name="username", placeholder='Enter Username')
-      .form-group
-        input.form-control(type='password', name="password", placeholder='Password')
-      button.btn.btn-default(type='submit') Submit
-      
-      a(href='/')
-        button.btn.btn-primary(type="button") Cancel
+	.container
+		h1 ICMS | Login Page
+		p.error #{error}
+		br
+		form( id="form_login_login" action="/login", method="post" )
+			.form-group
+				input( class="easyui-textbox", type='text', name="username", placeholder='Enter Username', 
+					data-options=" label:'Username:' " )
+			.form-group
+				input( class="easyui-textbox", type='password', name="password", placeholder='Password', 
+					data-options=" label : 'Password:' " )
+		table( style="width: 41%" )
+			tr
+				td
+					a( id="btn_register_login" href="javascript:void(0)" class="easyui-linkbutton"  ) Register
+				td( style="text-align : right" )
+					a( id="btn_login_login" href="javascript:void(0)" class="easyui-linkbutton"  ) Login
+
+	script( data-main="/js/app/login" src="/js/lib/require.js" )
