@@ -3,8 +3,8 @@
 /**
  * Module dependencies.
  */
-
-var appResultObj = require('../app');
+var configCtrl = require('../config/configCtrl');
+var appResultObj = require('../app')( configCtrl );
 var app = appResultObj.app;
 var debug = require('debug')('myexpressapp:server');
 var http = require('http');
@@ -13,8 +13,7 @@ var socketMainObj = require( '../socket/socketMain' )();
 /**
  * Get port from environment and store in Express.
  */
-
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || configCtrl.getWebServerPort() );
 app.set('port', port);
 
 /**

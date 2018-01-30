@@ -1,0 +1,16 @@
+/**
+*	Configuration json file
+*/
+{
+	"webServerPort" : 3000,
+	"db" : 
+	{
+		"url" : "localhost",
+		"port" : "27017",
+		"login" : "sa",
+		"password" : "x-admin00",
+		"name" : "ICMS",
+		"authSource" : "admin"
+	},
+	"sessionSecret" : "j%!N4F2XRe5fFYZn%282CM@2nnAzmd6K"
+}
